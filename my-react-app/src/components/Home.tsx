@@ -3,6 +3,7 @@ import { useRegisterMutation } from '../api/userApi';
 import { FooterLinks } from './components/FooterLinks';
 import { HeroContentLeft } from './components/hero/HeroContentLeft';
 import { EmailBanner } from './components/banners/EmailBanner';
+import { FaqWithImage } from './components/faq/FaqWithImage';
 // import {
 //   TextInput,
 //   PasswordInput,
@@ -39,6 +40,7 @@ export function Home() {
     <>
     <HeroContentLeft/>
     <EmailBanner/>
+    <FaqWithImage/>
     <FooterLinks />
     </>
   );

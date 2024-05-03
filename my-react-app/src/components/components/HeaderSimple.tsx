@@ -11,23 +11,19 @@ import {
   ScrollArea,
   rem,
 } from '@mantine/core';
-import '@mantine/core/styles/Group.css';
-import '@mantine/core/styles/UnstyledButton.css';
-import '@mantine/core/styles/Button.css';
+// import '@mantine/core/styles/Group.css';
+// import '@mantine/core/styles/UnstyledButton.css';
+// import '@mantine/core/styles/Button.css';
 
-import '@mantine/core/styles/Text.css';
-import '@mantine/core/styles/SimpleGrid.css';
-import '@mantine/core/styles/Center.css';
+// import '@mantine/core/styles/Text.css';
+// import '@mantine/core/styles/SimpleGrid.css';
+// import '@mantine/core/styles/Center.css';
 import '@mantine/core/styles/Burger.css';
 import '@mantine/core/styles/ScrollArea.css';
 import '@mantine/core/styles/Drawer.css';
 
 
-// import { MantineLogo } from '@mantinex/mantine-logo';
 import { useDisclosure } from '@mantine/hooks';
-import {
-  IconChevronDown,
-} from '@tabler/icons-react';
 import classes from './HeaderSimple.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,10 +31,9 @@ export function HeaderSimple() {
   const navigate = useNavigate()
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
-  // const theme = useMantineTheme();
 
   return (
-    <Box pb={120}>
+    <Box pb={0}>
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           <Group h="100%" gap={0} visibleFrom="sm">
