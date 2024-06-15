@@ -3,11 +3,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-      baseUrl: 'http://localhost:3000',
+      baseUrl: 'http://localhost:8000/',
       prepareHeaders: (headers) => {
         const token = localStorage.getItem('token');
         if (token) {
-          headers.set('authorization', `Bearer ${token}`);
+          headers.set('authorization', `${token}`);
         }
         return headers;
       }
@@ -15,7 +15,7 @@ export const userApi = createApi({
     endpoints: (builder) => ({
     register: builder.mutation({
       query: (user) => ({
-        url: '/users/register',
+        url: '/users/signup',
         method: 'POST',
         body: user
       })
@@ -29,14 +29,29 @@ export const userApi = createApi({
     }),
     createApplication: builder.mutation({
       query: (application) => ({
-        url: '/users/applications',
+        url: '/courses',
         method: 'POST',
         body: application
       })
     }),
     getApplications: builder.query({
-      query: (userId) => ({
-        url: `/users/applications?userId=${userId}`,
+      query: () => ({
+        url: `/courses`,
+      })
+    }),
+    getLessonsByCourse: builder.query({
+      query: (id) => ({
+        url: `/courses/${id}`,
+      })
+    }),
+    getProfile: builder.query({
+      query: () => ({
+        url: `/users/profile`,
+      })
+    }),
+    getLessons: builder.query({
+      query: (idLes) => ({
+        url: `/lessons/${idLes}`,
       })
     }),
     updateApplication: builder.mutation({
@@ -44,6 +59,13 @@ export const userApi = createApi({
         url: `/users/admin/applications/${id}`,
         method: 'PUT',
         body: { status }
+      })
+    }),
+    postLessons: builder.mutation({
+      query: ({ idLes, template_data }) => ({
+        url: `/lessons/${idLes}/solve`,
+        method: 'POST',
+        body: { template_data }
       })
     }),
     getAllApplications: builder.query({
@@ -60,5 +82,9 @@ export const {
   useCreateApplicationMutation,
   useGetApplicationsQuery,
   useUpdateApplicationMutation,
-  useGetAllApplicationsQuery
+  useGetAllApplicationsQuery,
+  useGetProfileQuery,
+  useGetLessonsQuery,
+  useGetLessonsByCourseQuery,
+  usePostLessonsMutation
 } = userApi;

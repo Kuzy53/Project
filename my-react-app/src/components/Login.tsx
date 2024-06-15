@@ -31,7 +31,7 @@ import { useNavigate } from 'react-router-dom';
 export function Login() {
 
   const navigate = useNavigate() 
-  const [login, setLogin] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [log, { isLoading, isError, error }] = useLoginMutation();
 
@@ -39,7 +39,7 @@ export function Login() {
 const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
   try {
-    const result = await log({ login, password }).unwrap();
+    const result = await log({ username, password }).unwrap();
     localStorage.setItem('token', result.token);
     navigate('/');
   } catch (err) {
@@ -60,7 +60,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="you@mantine.dev" required  onChange={(e) => setLogin(e.target.value)}/>
+        <TextInput label="Login" placeholder="you@mantine.dev" required  onChange={(e) => setUsername(e.target.value)}/>
         <PasswordInput label="Password" placeholder="Your password" required mt="md" onChange={(e) => setPassword(e.target.value)} />
         <Group justify="space-between" mt="lg">
           <Checkbox label="Remember me" />

@@ -1,0 +1,30 @@
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.quiz {
+    padding: 40px;
+    box-shadow: 0px 0px 1px 1px;
+    margin-top: 40px;
+}
+.answer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.m_5f6e695e {
+        display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    align-items: center;
+}
+
+.answer_item {
+    max-width: 400px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+    gap: 50px;
+}

@@ -31,6 +31,7 @@ export function HeaderSimple() {
   const navigate = useNavigate()
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
+  const token = localStorage.getItem('token')
 
   return (
     <Box pb={0}>
@@ -53,14 +54,25 @@ export function HeaderSimple() {
               </HoverCard.Target>
 
             </HoverCard>
-            <a href="#" className={classes.link} onClick={()=> {navigate('/admin')}}>
+            {/* <a href="#" className={classes.link} onClick={()=> {navigate('/admin')}}>
               Admin
-            </a>
+            </a> */}
           </Group>
 
           <Group visibleFrom="sm">
-            <Button variant="default" onClick={()=> {navigate('/login')}}>Log in</Button>
+          { token ? (
+              <>
+                              <Button variant="default" onClick={()=> {navigate('/profile')}}>Profile</Button>
+                <Button onClick={()=> {navigate('/')}}>Log out</Button>
+
+            </>
+              )  : (
+                <>
+               <Button variant="default" onClick={()=> {navigate('/login')}}>Log in</Button>
             <Button onClick={()=> {navigate('/register')}}>Sign up</Button>
+                </>
+              )
+               }
           </Group>
 
           <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="sm" />
@@ -96,8 +108,19 @@ export function HeaderSimple() {
           <Divider my="sm" />
 
           <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default" onClick={()=> {navigate('/login')}}>Log in</Button>
+            { token ? (
+              <>
+                              <Button variant="default" onClick={()=> {navigate('/profile')}}>Profile</Button>
+                <Button onClick={()=> {navigate('/')}}>Log out</Button>
+
+            </>
+              )  : (
+                <>
+               <Button variant="default" onClick={()=> {navigate('/login')}}>Log in</Button>
             <Button onClick={()=> {navigate('/register')}}>Sign up</Button>
+                </>
+              )
+               }
           </Group>
         </ScrollArea>
       </Drawer>

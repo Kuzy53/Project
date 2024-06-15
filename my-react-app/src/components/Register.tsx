@@ -11,7 +11,7 @@ import {
   Container,
   Group,
   Button,
-  MantineProvider
+  MantineProvider,
 } from '@mantine/core';
 import '@mantine/core/styles/PasswordInput.css';
 import '@mantine/core/styles/Checkbox.css';
@@ -30,10 +30,11 @@ import { useNavigate } from 'react-router-dom';
 
 export function Register() {
 
-  const [fullName, setfullName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
+  // const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [login, setLogin] = useState('');
+  const [role, setRole] = useState(4);
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [register, { isLoading, isError, error }] = useRegisterMutation();
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const result = await register({fullName, phone, email, login, password }).unwrap();
+      const result = await register({name, username, email, password, role }).unwrap();
       localStorage.setItem('userId', result.id); 
       navigate('/login')
     } catch (err) {
@@ -64,10 +65,10 @@ export function Register() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput mt={10} label="fullName" placeholder="Кузнецов Никита Георгиевич" required  onChange={(e) => setfullName(e.target.value)}/>
-        <TextInput mt={10} label="Phone" placeholder="8 800 535 35 35" required  onChange={(e) => setPhone(e.target.value)}/>
+        <TextInput mt={10} label="fullName" placeholder="Кузнецов Никита Георгиевич" required  onChange={(e) => setName(e.target.value)}/>
+        <TextInput mt={10} label="Login" placeholder="Login" required  onChange={(e) => setUsername(e.target.value)}/>
+        {/* <TextInput mt={10} label="Phone" placeholder="8 800 535 35 35" required  onChange={(e) => setPhone(e.target.value)}/> */}
         <TextInput mt={10} label="Email" placeholder="nikita@mail.ru" required  onChange={(e) => setEmail(e.target.value)}/>
-        <TextInput mt={10} label="Email" placeholder="Login" required  onChange={(e) => setLogin(e.target.value)}/>
         <PasswordInput mt={10} label="Password" placeholder="Your password" required onChange={(e) => setPassword(e.target.value)} />
         <Group justify="space-between" mt="lg">
           <Checkbox label="Remember me" />

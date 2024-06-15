@@ -9,6 +9,9 @@ import { Home } from './components/Home.tsx';
 import { MantineProvider } from '@mantine/core';
 import { HeaderSimple } from './components/components/HeaderSimple';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Profile } from './components/Profile';
+import { CoursePage } from './components/CoursePage';
+import { LessonPage } from './components/LessonPage';
 
 const queryClient = new QueryClient();
 
@@ -29,10 +32,16 @@ export const App = () => {
       )} /> */}
       {/* <Route path="/main" component={<ApplicationsList/>} /> */}
       <Route path="/applications" element={<ApplicationsList/>} />
-      <Route path="/form" element={<ApplicationForm/>} />
+      {/* <Route path="/form" element={<ApplicationForm/>} /> */}
       <Route path="/register" element={<Register/>} />
       <Route path="/admin" element={<AdminPanel/>} />
-      <Route path="/" element={<Home/>} />
+      <Route path="/" element={<ApplicationsList/>} />
+      <Route path="/applications/courses/:id" element={<CoursePage/>} />
+      <Route path="/applications/courses/:id/lessons/:idLes" element={<LessonPage/>} />
+      <Route path="/courses/:id" element={<CoursePage/>} />
+      <Route path="/applications/courses/:id/lessons/:idLes" element={<LessonPage/>} />
+      <Route path="/Profile" element={<Profile/>} />
+
     </Routes>
     </Suspense>
     </BrowserRouter>

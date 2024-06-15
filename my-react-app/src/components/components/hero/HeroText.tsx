@@ -20,17 +20,16 @@ export function HeroText() {
 
       <div className={classes.inner}>
         <Title className={classes.title}>
-          Automated AI{' '}
           <Text component="span" className={classes.highlight} inherit>
-            code reviews
+          Helmsman
           </Text>{' '}
-          for any stack
+          for Обучение
         </Title>
 
         <Container p={0} size={600}>
           <Text size="lg" c="dimmed" className={classes.description}>
-            Build more reliable software with AI companion. AI is also trained to detect lazy
-            developers who do nothing and just complain on Twitter.
+            Тяжело в ученье, легко в бою
+            Семь раз  отмерь - один рааз отрежь
           </Text>
         </Container>
 
@@ -38,9 +37,8 @@ export function HeroText() {
         <Button
       variant="gradient"
       gradient={{ from: 'blue', to: 'pink', deg: 104 }}
-      onClick={() => {navigate('/form')}}
     >
-      Сreate a request
+      Погнали
     </Button>
         </div>
       </div>
